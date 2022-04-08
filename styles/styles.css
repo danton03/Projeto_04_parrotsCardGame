@@ -33,7 +33,7 @@ body{
 .cards{
   width: 70%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
