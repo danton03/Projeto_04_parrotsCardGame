@@ -12,6 +12,7 @@ const parrots = [
 let numCartas = 0;
 let numJogadas = 0;
 let numClicadas = 0;
+let acertos = 0;
 let cliquesSeguidos = 0;
 
 //variável que pega a div onde os cards estão dispostos
@@ -105,17 +106,25 @@ function verifica(cartaClicada) {
       const nomeCarta1 = carta1.getAttribute("name");
       const nomeCarta2 = carta2.getAttribute("name");
 
-      /* Deixa as cartas viradas por 1.5s antes de chamar a função 
+      /* Deixa as cartas viradas por 1s antes de chamar a função 
       que compara as cartas. Isso permite que o usuário veja as cartas */
-      setTimeout(comparaCartas, 1500);
+      setTimeout(comparaCartas, 1000);
 
       //Função que compara as cartas
       function comparaCartas() {
+        numJogadas += numClicadas; //contabiliza quantidade de jogadas
         //Caso as cartas sejam iguais
         if (nomeCarta1 === nomeCarta2) {
           //Adiciona a classe "desabilitada" para impedir que sejam comparadas novamente
           carta1.classList.add("desabilitada");
           carta2.classList.add("desabilitada");
+          acertos++;
+          console.log("Acertos: "+acertos);
+          
+          /* verifica se o jogo acabou */
+          if (acertos === numCartas/2) {
+            alert(`Você ganhou em ${numJogadas} jogadas!"`); //informa ao usuário
+          }
         }
         //Se forem diferentes
         else {
