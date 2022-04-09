@@ -1,5 +1,5 @@
 /* variáveis globais */
-const listaDeCartas = [
+const parrots = [
   {nome: "bobrossparrot", urlImg: "../images/bobrossparrot.gif"},
   {nome: "explodyparrot", urlImg: "../images/explodyparrot.gif"},
   {nome: "fiestaparrot", urlImg: "../images/fiestaparrot.gif"},
@@ -19,21 +19,25 @@ function adicionaCartas() {
   console.log("passou no adicionaCartas");
   console.log("No adiciona cartas:"+numCartas);
   for (let i = 0; i < numCartas; i++) {
-    console.log("passou no for");
-    cartas.innerHTML += `<div class="card">
-    <img src="/images/front.png" alt="parrot-card">
-    </div>`; 
+    cartas.innerHTML += `
+    <div class="card" onclick="viraCarta(this)">
+      <img class="frente" src=${parrots[2].urlImg} alt="parrot-card">
+      <img class="verso" src="../images/front.png" alt="parrot-card">
+    </div>
+    `; 
   }
 }
 
 //to-do: Remover os console.log
 //pergunta ao usuário com quantas cartas ele quer jogar
 do {
+  console.log("No adiciona condicional:"+numCartas);
   numCartas = Number(prompt("Com quantas cartas você quer jogar?"));
-  console.log(numCartas)
   if (numCartas >= 4 && numCartas <= 14 && numCartas % 2 === 0) {
     adicionaCartas();
-    console.log("passou no if");
   }
-} while (numCartas % 2 !== 0);
+} while (numCartas % 2 !== 0 || numCartas < 4 || numCartas > 14);
 
+function viraCarta(carta) {
+  carta.classList.add("flip")
+}
