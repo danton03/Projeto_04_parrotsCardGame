@@ -16,8 +16,6 @@ const cartas = document.querySelector(".cards");
 
 //Função para adicionar os cards no html
 function adicionaCartas() {
-  console.log("passou no adicionaCartas");
-  console.log("No adiciona cartas:"+numCartas);
   for (let i = 0; i < numCartas; i++) {
     cartas.innerHTML += `
     <div class="card" onclick="viraCarta(this)">
@@ -31,7 +29,6 @@ function adicionaCartas() {
 //to-do: Remover os console.log
 //pergunta ao usuário com quantas cartas ele quer jogar
 do {
-  console.log("No adiciona condicional:"+numCartas);
   numCartas = Number(prompt("Com quantas cartas você quer jogar?"));
   if (numCartas >= 4 && numCartas <= 14 && numCartas % 2 === 0) {
     adicionaCartas();
