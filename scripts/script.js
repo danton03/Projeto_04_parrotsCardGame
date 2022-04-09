@@ -57,7 +57,7 @@ function adicionaCartas() {
     cartas.innerHTML += `
     <div class="card" name=${listaGifs[i].nome} onclick="viraCarta(this)">
       <img class="frente" src=${listaGifs[i].urlImg} alt="parrot-card">
-      <img class="verso" src="../images/front.png" alt="parrot-card">
+      <img class="verso" src="./images/front.png" alt="parrot-card">
     </div>
     `;
   }
