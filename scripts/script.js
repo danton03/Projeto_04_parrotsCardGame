@@ -63,16 +63,19 @@ function adicionaCartas() {
   }
 }
 
-//to-do: Remover os console.log
+//Função que inicia o jogo
+function iniciarJogo(){
+  //Repete a pergunta enquanto não figitar um número válido
+  do {
+    //pergunta ao usuário com quantas cartas ele quer jogar
+    numCartas = Number(prompt("Com quantas cartas você quer jogar?"));
+    if (numCartas >= 4 && numCartas <= 14 && numCartas % 2 === 0) {
+      adicionaCartas();
+    }
+  } while (numCartas % 2 !== 0 || numCartas < 4 || numCartas > 14);
+}
 
-//pergunta ao usuário com quantas cartas ele quer jogar
-do {
-  numCartas = Number(prompt("Com quantas cartas você quer jogar?"));
-  if (numCartas >= 4 && numCartas <= 14 && numCartas % 2 === 0) {
-    adicionaCartas();
-  }
-} while (numCartas % 2 !== 0 || numCartas < 4 || numCartas > 14);
-
+iniciarJogo(); //Iniciando o jogo pela primeira vez
 
 /*                    Comparando as cartas clicadas                    */
 
@@ -119,11 +122,11 @@ function verifica(cartaClicada) {
           carta1.classList.add("desabilitada");
           carta2.classList.add("desabilitada");
           acertos++;
-          console.log("Acertos: "+acertos);
           
           /* verifica se o jogo acabou */
           if (acertos === numCartas/2) {
             alert(`Você ganhou em ${numJogadas} jogadas!"`); //informa ao usuário
+            jogarNovamente();
           }
         }
         //Se forem diferentes
@@ -153,6 +156,31 @@ function viraCarta(carta) {
     carta.classList.add("flip"); //vira a carta
     //chama a função de verificar as cartas passando o elemento HTML recebido
     verifica(carta);
+  }
+}
+
+function jogarNovamente() {
+  let resposta;
+  do {
+    resposta = prompt("Deseja jogar novamente? (sim ou não)").toLowerCase();
+    console.log("resposta: "+resposta);
+    console.log("resposta: "+(resposta=="não"));
+  } while (resposta !== "sim" && resposta!== "não")
+
+  //Caso queira jogar novamente
+  if(resposta === "sim"){
+    //reseta as variáveis
+    numCartas = 0;
+    numJogadas = 0;
+    numClicadas = 0;
+    acertos = 0;
+    cliquesSeguidos = 0;
+    cartas.innerHTML = "";
+    iniciarJogo(); //chama a função que inicia o jogo
+  }
+  //Caso não queira jogar novamente
+  else if (resposta === "não"){
+    alert("Tudo bem, você já pode fechar a página do jogo.\nEspero que tenha se divertido! :)");
   }
 }
 
