@@ -1,3 +1,4 @@
+/*           Estilizações gerais da página         */
 body, .page, .card, .cards{
   display: flex;
   background-color: #EEF9BF;
@@ -14,6 +15,7 @@ body{
   align-items: center;
 }
 
+/*             Estilização do título            */
 .titulo{
   width: 100%;
   margin: 4% 25%;
@@ -30,6 +32,7 @@ body{
   color: #75B79E;
 }
 
+/*       Estilização da área das cartas       */
 .cards{
   width: 70%;
   align-items: center;
@@ -38,6 +41,7 @@ body{
   box-sizing: border-box;
 }
 
+/*           Estilização das cartas          */
 .card{
   position: relative;
   width: 117px;
@@ -52,20 +56,23 @@ body{
   margin-left: 2%;
   margin-right: 2%;
 
+  /* Efeito 3D de virar a carta */
   transform-style: preserve-3d;
   transition: 0.5s;
 
   background-color: #A7E9AF;
 }
 
+/*  Rotacionando a carta  */
 .card.flip {
   transform: rotateY(180deg);
 }
 
+
 .frente, .verso{
   position: absolute;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +88,7 @@ body{
   height: 70%;
 }
 
+/*                Responsividade               */
 @media (max-width: 640px){
   .titulo h1{
     font-size: 46px;
