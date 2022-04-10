@@ -68,7 +68,7 @@ function iniciarJogo(){
   //Repete a pergunta enquanto não figitar um número válido
   do {
     //pergunta ao usuário com quantas cartas ele quer jogar
-    numCartas = Number(prompt("Com quantas cartas você quer jogar?"));
+    numCartas = Number(prompt("Com quantas cartas você quer jogar? (4-14)"));
     if (numCartas >= 4 && numCartas <= 14 && numCartas % 2 === 0) {
       adicionaCartas();
     }
@@ -82,7 +82,6 @@ iniciarJogo(); //Iniciando o jogo pela primeira vez
 function verifica(cartaClicada) {
   //Verifica se o usuário já encontrou o par dessa carta
   const cartaIsDisabled = cartaClicada.classList.contains("desabilitada");
-  console.log("Desabilitada: " + cartaIsDisabled); //Remover depois
 
   //Só irá comparar se o usuário ainda não encontrou o par dessa carta
   if (cartaIsDisabled === false) {
@@ -163,8 +162,6 @@ function jogarNovamente() {
   let resposta;
   do {
     resposta = prompt("Deseja jogar novamente? (sim ou não)").toLowerCase();
-    console.log("resposta: "+resposta);
-    console.log("resposta: "+(resposta=="não"));
   } while (resposta !== "sim" && resposta!== "não")
 
   //Caso queira jogar novamente
